@@ -12,7 +12,17 @@ createConnection().then(async connection => {
     const RepoRepository = getRepository(Repository);
     const repos = await RepoRepository.find();
 
+	/**
+	repos [ Repository {
+	    name: 'test',
+	    description: 'no contributions made',
+	    contributions: [ [Contribution] ] } ]
+	*/
 	console.log('repos', repos);
+	
+	/**
+	contributions [ Contribution { count: null, user: null } ]
+	*/
 	console.log('contributions', repos[0].contributions);
 
     await connection.manager.save(repos);
